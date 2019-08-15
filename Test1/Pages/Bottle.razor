@@ -1,0 +1,34 @@
+﻿@page "/bottle/{number:int}/{name}"
+@page "/test"
+@inject BottleService BottleService
+<h3>Bottle</h3>
+
+<ol>
+    @foreach (var bottle in bottles)
+    {
+        <li>@bottle.Id has drink @bottle.DrinkName has volume of @bottle.Volume and it is bottled on @bottle.BottledOn</li>
+    }
+</ol>
+
+
+<div>Query string brings us @Number and @Name</div>
+<div>Inside teh bparent bottle element: @ChildContent</div>
+
+
+@code {
+    List<BottleModel> bottles;
+
+    [Parameter]
+    public int Number { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        bottles = BottleService.GetBottles(0.3).ToList();
+    }
+}

@@ -1,0 +1,11 @@
+﻿<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="https://i.pik.bg/news/779/660_552748adba016a452791376574edaea8.jpg" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Person with Id: @Person.Id</h5>
+        <p class="card-text">Details for person: @Person.FirstName @Person.LastName @Person.PhoneNumber</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]public Person Person { get; set; }
+}

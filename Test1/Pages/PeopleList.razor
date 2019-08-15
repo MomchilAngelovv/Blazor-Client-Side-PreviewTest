@@ -1,0 +1,47 @@
+﻿@page "/peoplelist"
+@inject IPeopleService PeopleService
+<h3>List of all registered people:</h3>
+
+<button @onclick="TogglePeopleList" class="@darkButton">Click to Show/Hide people info</button>
+
+<input type="text" @bind="this.testField"/>
+<button @onclick="ChangeFirstPersonName">Change first person name</button>
+
+<button @onclick="ChangeInputFieldValue">Reset</button>
+
+@if (visibleData)
+{
+    <ul>
+        @foreach (var person in people)
+        {
+            <PersonCard Person="@person"></PersonCard>
+        }
+    </ul>
+}
+
+@code { 
+    List<Person> people;
+    bool visibleData = false;
+    string darkButton = "btn btn-dark";
+    string testField = "";
+
+    protected override void OnInitialized()
+    {
+        people = PeopleService.GetPeople().ToList();
+    }
+
+    void TogglePeopleList()
+    {
+        visibleData = !visibleData;
+    }
+
+    void ChangeInputFieldValue()
+    {
+        this.testField = "Please enter new name";
+    }
+
+    void ChangeFirstPersonName()
+    {
+        this.people[0].FirstName = this.testField;
+    }
+}

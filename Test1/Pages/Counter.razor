@@ -1,0 +1,24 @@
+﻿@page "/counter"
+@inject IGlobalState GlobalState
+
+<h1>Counter</h1>
+
+<p>Current count: @GlobalState.GlobalCounter</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<Bottle Name="Unufri" Number="99">Inside this will be</Bottle>
+
+<button @onclick="ChangeAppName" class="btn btn-warning">Change the name</button>
+@code {
+    void IncrementCount()
+    {
+        GlobalState.GlobalCounter++;
+    }
+
+    void ChangeAppName()
+    {
+        GlobalState.AppName = "NewAppName";
+        Console.WriteLine("Test browser consolse");
+    }
+}
