@@ -1,0 +1,21 @@
+﻿@page "/checkbox"
+<h3>Checkbox</h3>
+
+<input type="checkbox" @bind-value="IsValid" id="IsValid boolean" name="IsValid boolean"/>
+<label for="scales">Scales</label>
+
+<button @onclick="ButtonIsClicked">Click to write in console</button>
+
+@if (IsValid)
+{
+    <p>I can show info here</p>
+}
+@code {
+    public bool IsValid { get; set; }
+
+    void ButtonIsClicked(UIMouseEventArgs eventArgs)
+    {
+        
+        Console.WriteLine($"When i clicked button my mouse was on coords:{eventArgs.ClientX} {eventArgs.ClientY}");
+    }
+}

@@ -1,0 +1,14 @@
+﻿@page "/events"
+
+<h3>EventsTest</h3>
+
+<input type="number" @bind="Value" @onwheel="Increment"/>
+
+@code {
+    public int Value { get; set; }
+
+    private void Increment()
+    {
+        Value++;
+    }
+}

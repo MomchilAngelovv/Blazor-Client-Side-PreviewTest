@@ -1,0 +1,38 @@
+﻿@page "/bindingtest"
+@inject IGlobalState GlobalState
+
+<h1>@Message</h1>
+
+<button @onclick="InsertMessageToMessageList">Send message</button>
+<input type="text" @bind="Message" />
+<hr />
+<input type="text" @bind="Character"/>
+<button @onclick="AddCharacterToString">Add character</button>
+
+@if (GlobalState.GlobalChatMessages.Any()) 
+{
+    <ol>
+        @foreach (var message in GlobalState.GlobalChatMessages)
+        {
+            <li>@message</li>
+        }
+    </ol>
+}
+
+@code {
+    public string Character { get; set; }
+    public string Message { get; set; }
+
+    public void InsertMessageToMessageList()
+    {
+        if (Message.Length > 2)
+        {
+            GlobalState.GlobalChatMessages.Add($"{Message} -> characters: {Message.Length}");
+        }
+    }
+
+    public void AddCharacterToString()
+    {
+        Message += Character;
+    }
+}

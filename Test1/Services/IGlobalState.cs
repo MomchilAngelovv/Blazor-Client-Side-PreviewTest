@@ -10,5 +10,7 @@ namespace Test1.Services
         int GlobalCounter { get; set; }
 
         string AppName { get; set; }
+
+        List<string> GlobalChatMessages { get; set; }
     }
 }

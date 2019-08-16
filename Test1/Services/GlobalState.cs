@@ -10,5 +10,7 @@ namespace Test1.Services
         public int GlobalCounter { get; set; }
 
         public string AppName { get; set; } = "MyFirstBlazorAppStateClassName";
+
+        public List<string> GlobalChatMessages { get; set; } = new List<string>();
     }
 }

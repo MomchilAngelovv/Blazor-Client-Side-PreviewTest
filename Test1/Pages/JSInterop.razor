@@ -1,0 +1,22 @@
+﻿@page "/js"
+@inject IJSRuntime JsRuntime
+
+<h3>@MyName</h3>
+
+<button @onclick="MakePrompt">Make promt call</button>
+
+@code {
+    public string MyName { get; set; }
+
+    async Task MakePrompt()
+    {
+        MyName = await JsRuntime.InvokeAsync<string>("prompt", "Your name", "Enter your name here");
+        await JsRuntime.InvokeAsync<object>("console.log", "MXXXX");
+    }
+
+    [JSInvokable]
+    public async static Task AlertUserForError()
+    {
+        Console.WriteLine("THERE YOU ARE");
+    }
+}
