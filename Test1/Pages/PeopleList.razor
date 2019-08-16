@@ -1,10 +1,11 @@
 ﻿@page "/peoplelist"
 @inject IPeopleService PeopleService
+@inject HttpClient Http
 <h3>List of all registered people:</h3>
-
+<h2>@this.testField</h2>
 <button @onclick="TogglePeopleList" class="@darkButton">Click to Show/Hide people info</button>
 
-<input type="text" @bind="this.testField"/>
+<input type="text" @bind-value="this.testField" @bind-value:event="oninput" />
 <button @onclick="ChangeFirstPersonName">Change first person name</button>
 
 <button @onclick="ChangeInputFieldValue">Reset</button>
